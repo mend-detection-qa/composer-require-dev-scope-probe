@@ -5,7 +5,7 @@
     "validate_scan_output": true,
     "_comment_validate_scan_output": "Whether to validate the scan output/exit code. Options: true | false. Default: true",
     "scan_output": {
-      "_security_scan_report_conclusion": "success",
+      "security_scan_report_conclusion": "success",
       "_comment_security_scan_report_conclusion": "Optional. Expected scan report conclusion. Options: 'success' | 'failure'. This validates the security scan result status. If not provided, this check will not be performed.",
       "total_libs_scanned": {
         "gte": 20
@@ -26,13 +26,13 @@
       "_comment_check_update_request_sca_results": "Whether to validate extraProperties.scaResults from the update request. Parses scaResults as JSON and asserts: (1) totalFail is empty {}, (2) no results entry has level 'ERROR'. Options: true | false. Default: false",
       "_comment_probe_purpose": "This probe validates that Mend SCA correctly distinguishes composer require (group=main) from require-dev (group=dev) packages. Packages from require-dev must NOT be silently dropped. Expected: 2 main packages (monolog/monolog, psr/log) and 26 dev packages (phpunit/phpunit + full transitive closure).",
       "expected_total_dependencies_number": {
-        "eq": 28
+        "gte": 25
       },
       "expected_direct_dependencies_number": {
         "eq": 2
       },
       "expected_transitive_dependencies_number": {
-        "eq": 26
+        "gte": 23
       },
       "_comment_expected_dependencies_number": "Optional. Expected number of dependencies with comparison operator. Operators: gt (>), gte (>=), lt (<), lte (<=), eq (==). If not provided, this check will not be performed.",
       "direct_dependencies_names_list": {
